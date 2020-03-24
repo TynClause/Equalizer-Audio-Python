@@ -7,6 +7,7 @@ import librosa as lr
 import numpy as np
 import pyqtgraph as pg
 import sounddevice as sd
+from scipy.signal import butter, lfilter, freqz
 
 
 class Ui_Equalizer(object):
@@ -49,7 +50,6 @@ class Ui_Equalizer(object):
         # =======================================
         self.C1.setRange(0, 100)
         self.C1.valueChanged[int].connect(self.update_spinbox_C1)
-        self.C1.sliderReleased.connect(self.slider_released_C1)
         # =======================================
         self.C2 = QtWidgets.QSlider(self.horizontalLayoutWidget)
         self.C2.setOrientation(QtCore.Qt.Vertical)
@@ -58,7 +58,6 @@ class Ui_Equalizer(object):
         # =======================================
         self.C2.setRange(0, 100)
         self.C2.valueChanged[int].connect(self.update_spinbox_C2)
-        self.C2.sliderReleased.connect(self.slider_released_C2)
         # =======================================
         self.C3 = QtWidgets.QSlider(self.horizontalLayoutWidget)
         self.C3.setOrientation(QtCore.Qt.Vertical)
@@ -67,7 +66,6 @@ class Ui_Equalizer(object):
         # =======================================
         self.C3.setRange(0, 100)
         self.C3.valueChanged[int].connect(self.update_spinbox_C3)
-        self.C3.sliderReleased.connect(self.slider_released_C3)
         # =======================================
         self.C4 = QtWidgets.QSlider(self.horizontalLayoutWidget)
         self.C4.setOrientation(QtCore.Qt.Vertical)
@@ -76,7 +74,6 @@ class Ui_Equalizer(object):
         # =======================================
         self.C4.setRange(0, 100)
         self.C4.valueChanged[int].connect(self.update_spinbox_C4)
-        self.C4.sliderReleased.connect(self.slider_released_C4)
         # =======================================
         self.C5 = QtWidgets.QSlider(self.horizontalLayoutWidget)
         self.C5.setOrientation(QtCore.Qt.Vertical)
@@ -85,7 +82,6 @@ class Ui_Equalizer(object):
         # =======================================
         self.C5.setRange(0, 100)
         self.C5.valueChanged[int].connect(self.update_spinbox_C5)
-        self.C5.sliderReleased.connect(self.slider_released_C5)
         # =======================================
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setGeometry(QtCore.QRect(90, 390, 621, 231))
@@ -259,21 +255,6 @@ class Ui_Equalizer(object):
         self.retranslateUi(Equalizer)
         QtCore.QMetaObject.connectSlotsByName(Equalizer)
 
-    def slider_released_C1(self):
-        pass
-
-    def slider_released_C2(self):
-        pass
-
-    def slider_released_C3(self):
-        pass
-
-    def slider_released_C4(self):
-        pass
-
-    def slider_released_C5(self):
-        pass
-
     def update_spinbox_C1(self, value):
         self.doubleSpinBox.setValue(float(value)/100)
 
@@ -331,7 +312,7 @@ class Ui_Equalizer(object):
         self.label_11.setText(_translate("Equalizer", "Magnitude [dB]"))
         self.label_12.setText(_translate("Equalizer", "Time (s)"))
         self.label_13.setText(_translate(
-            "Equalizer", "kateristik equalizer audio"))
+            "Equalizer", "vizualize equalizer audio"))
         self.pushButton.setText(_translate("Equalizer", "Load"))
         self.pushButton_2.setText(_translate("Equalizer", "Plot"))
         self.pushButton_3.setText(_translate("Equalizer", "Reset"))
@@ -381,6 +362,8 @@ class Ui_Equalizer(object):
     def stopSound(self):
         if self.fileName:
             sd.stop()
+
+    def
 
 
 if __name__ == "__main__":
