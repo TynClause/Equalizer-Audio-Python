@@ -363,8 +363,6 @@ class Ui_Equalizer(object):
         if self.fileName:
             sd.stop()
 
-    def
-
 
 if __name__ == "__main__":
     import sys
