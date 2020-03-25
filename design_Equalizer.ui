@@ -84,13 +84,6 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QSlider" name="C5">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
     </layout>
    </widget>
    <widget class="QGraphicsView" name="graphicsView">
@@ -106,9 +99,9 @@
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>130</x>
       <y>330</y>
-      <width>51</width>
+      <width>73</width>
       <height>34</height>
      </rect>
     </property>
@@ -116,17 +109,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>C1</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Low</string>
+        <string>Low Pass Filter</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -138,9 +121,9 @@
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>280</x>
       <y>330</y>
-      <width>65</width>
+      <width>75</width>
       <height>34</height>
      </rect>
     </property>
@@ -148,17 +131,10 @@
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>C2</string>
+        <string>High Pass Filter</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>Band 4-8 kHz</string>
        </property>
       </widget>
      </item>
@@ -167,9 +143,9 @@
    <widget class="QWidget" name="verticalLayoutWidget_4">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>430</x>
       <y>330</y>
-      <width>71</width>
+      <width>78</width>
       <height>34</height>
      </rect>
     </property>
@@ -177,17 +153,10 @@
      <item>
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>C3</string>
+        <string>Band Pass Filter</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Band 9-13 kHz</string>
        </property>
       </widget>
      </item>
@@ -196,9 +165,9 @@
    <widget class="QWidget" name="verticalLayoutWidget_5">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>590</x>
       <y>330</y>
-      <width>77</width>
+      <width>78</width>
       <height>34</height>
      </rect>
     </property>
@@ -206,46 +175,10 @@
      <item>
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>C4</string>
+        <string>Band Stop Filter</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_8">
-       <property name="text">
-        <string>Band 13-17 kHz</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_6">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>330</y>
-      <width>75</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_6">
-     <item>
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>C5</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>High frequency</string>
        </property>
       </widget>
      </item>
@@ -254,7 +187,7 @@
    <widget class="QDoubleSpinBox" name="doubleSpinBox">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>130</x>
       <y>300</y>
       <width>62</width>
       <height>22</height>
@@ -264,7 +197,7 @@
    <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>290</x>
       <y>300</y>
       <width>62</width>
       <height>22</height>
@@ -274,7 +207,7 @@
    <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>440</x>
       <y>300</y>
       <width>62</width>
       <height>22</height>
@@ -284,17 +217,7 @@
    <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>300</y>
-      <width>62</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QDoubleSpinBox" name="doubleSpinBox_5">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
+      <x>600</x>
       <y>300</y>
       <width>62</width>
       <height>22</height>
@@ -324,7 +247,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Frequency [kHz]</string>
+     <string>Time (s)</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_13">
@@ -343,7 +269,10 @@
      </font>
     </property>
     <property name="text">
-     <string>kateristik equalizer audio</string>
+     <string>Visualisasi Audio</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_2">
