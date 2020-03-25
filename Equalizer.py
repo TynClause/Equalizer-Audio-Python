@@ -5,7 +5,8 @@ import librosa as lr
 import numpy as np
 import pyqtgraph as pg
 import sounddevice as sd
-from scipy.signal import butter, lfilter, freqz
+from scipy import signal
+from audiofilters.low_pass_filter import low_pass_filter
 
 # declaration class
 
@@ -46,28 +47,28 @@ class Ui_Equalizer(object):
         self.C1.setOrientation(QtCore.Qt.Vertical)
         self.C1.setObjectName("C1")
         self.horizontalLayout.addWidget(self.C1)
-        self.C1.setRange(0, 100)    # set range for C1 in here
+        self.C1.setRange(0, 15000)    # set range for C1 in here
         self.C1.valueChanged[int].connect(
             self.update_spinbox_C1)   # update data to spinbox C1
         self.C2 = QtWidgets.QSlider(self.horizontalLayoutWidget)
         self.C2.setOrientation(QtCore.Qt.Vertical)
         self.C2.setObjectName("C2")
         self.horizontalLayout.addWidget(self.C2)
-        self.C2.setRange(0, 100)    # set range for C2 in here
+        self.C2.setRange(0, 15000)    # set range for C2 in here
         self.C2.valueChanged[int].connect(
             self.update_spinbox_C2)   # update data to spinbox C2
         self.C3 = QtWidgets.QSlider(self.horizontalLayoutWidget)
         self.C3.setOrientation(QtCore.Qt.Vertical)
         self.C3.setObjectName("C3")
         self.horizontalLayout.addWidget(self.C3)
-        self.C3.setRange(0, 100)    # set range for C3 in here
+        self.C3.setRange(0, 15000)    # set range for C3 in here
         self.C3.valueChanged[int].connect(
             self.update_spinbox_C3)   # update data to spinbox C3
         self.C4 = QtWidgets.QSlider(self.horizontalLayoutWidget)
         self.C4.setOrientation(QtCore.Qt.Vertical)
         self.C4.setObjectName("C4")
         self.horizontalLayout.addWidget(self.C4)
-        self.C4.setRange(0, 100)  # set range for C4 in here
+        self.C4.setRange(0, 15000)  # set range for C4 in here
         self.C4.valueChanged[int].connect(
             self.update_spinbox_C4)   # update data to spinbox C4
         # ploting graphic visualization
@@ -122,36 +123,36 @@ class Ui_Equalizer(object):
         self.doubleSpinBox.setGeometry(QtCore.QRect(130, 300, 62, 22))
         self.doubleSpinBox.setObjectName("doubleSpinBox")
         # set range for doubleSpinbox C1
-        self.doubleSpinBox.setRange(0.0, 100.0)
-        self.doubleSpinBox.setDecimals(2)  # set digit decimal C1
-        self.doubleSpinBox.setSingleStep(0.1)  # set counter C1
+        self.doubleSpinBox.setRange(0.0, 15000)
+        self.doubleSpinBox.setDecimals(0)  # set digit decimal C1
+        self.doubleSpinBox.setSingleStep(1)  # set counter C1
         self.doubleSpinBox.editingFinished.connect(
             self.update_slider_position_C1)  # update slider C1
         self.doubleSpinBox_2 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_2.setGeometry(QtCore.QRect(290, 300, 62, 22))
         self.doubleSpinBox_2.setObjectName("doubleSpinBox_2")
         # set range for doubleSpinBox C2
-        self.doubleSpinBox_2.setRange(0.0, 100.0)
-        self.doubleSpinBox_2.setDecimals(2)  # set digit decimal C2
-        self.doubleSpinBox_2.setSingleStep(0.1)  # set counter C2
+        self.doubleSpinBox_2.setRange(0.0, 15000)
+        self.doubleSpinBox_2.setDecimals(0)  # set digit decimal C2
+        self.doubleSpinBox_2.setSingleStep(1)  # set counter C2
         self.doubleSpinBox_2.editingFinished.connect(
             self.update_slider_position_C2)  # update slider C2
         self.doubleSpinBox_3 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_3.setGeometry(QtCore.QRect(440, 300, 62, 22))
         self.doubleSpinBox_3.setObjectName("doubleSpinBox_3")
         # set range for doubleSpinBox C3
-        self.doubleSpinBox_3.setRange(0.0, 100.0)
-        self.doubleSpinBox_3.setDecimals(2)  # set digit decimal C3
-        self.doubleSpinBox_3.setSingleStep(0.1)  # set digit counter C3
+        self.doubleSpinBox_3.setRange(0.0, 15000)
+        self.doubleSpinBox_3.setDecimals(0)  # set digit decimal C3
+        self.doubleSpinBox_3.setSingleStep(1)  # set digit counter C3
         self.doubleSpinBox_3.editingFinished.connect(
             self.update_slider_position_C3)  # update slinder C3
         self.doubleSpinBox_4 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_4.setGeometry(QtCore.QRect(600, 300, 62, 22))
         self.doubleSpinBox_4.setObjectName("doubleSpinBox_4")
         # set range for doubleSpinBox C4
-        self.doubleSpinBox_4.setRange(0.0, 100.0)
-        self.doubleSpinBox_4.setDecimals(2)  # set digit decimal C4
-        self.doubleSpinBox_4.setSingleStep(0.1)  # set counter C4
+        self.doubleSpinBox_4.setRange(0.0, 15000)
+        self.doubleSpinBox_4.setDecimals(0)  # set digit decimal C4
+        self.doubleSpinBox_4.setSingleStep(1)  # set counter C4
         self.doubleSpinBox_4.editingFinished.connect(
             self.update_slider_position_C4)  # update slider C4
         self.label_11 = QtWidgets.QLabel(self.centralwidget)
@@ -205,39 +206,39 @@ class Ui_Equalizer(object):
         QtCore.QMetaObject.connectSlotsByName(Equalizer)
 
     def update_spinbox_C1(self, value):  # function update value spinbox C1
-        self.doubleSpinBox.setValue(float(value)/100)
+        self.doubleSpinBox.setValue(float(value))
 
     def update_spinbox_C2(self, value):  # function update value spinbox C2
-        self.doubleSpinBox_2.setValue(float(value)/100)
+        self.doubleSpinBox_2.setValue(float(value))
 
     def update_spinbox_C3(self, value):  # function update value spinbox C3
-        self.doubleSpinBox_3.setValue(float(value)/100)
+        self.doubleSpinBox_3.setValue(float(value))
 
     def update_spinbox_C4(self, value):  # function update value spinbox C4
-        self.doubleSpinBox_4.setValue(float(value)/100)
+        self.doubleSpinBox_4.setValue(float(value))
 
     # function update position slider C1
     def update_slider_position_C1(self):
         self.UpdateFromSpinbox = True
-        self.C1.setSliderPosition(self.doubleSpinBox.value()*100)
+        self.C1.setSliderPosition(self.doubleSpinBox.value())
         self.UpdateFromSpinbox = False
 
     # function update position slider C2
     def update_slider_position_C2(self):
         self.UpdateFromSpinbox = True
-        self.C2.setSliderPosition(self.doubleSpinBox_2.value()*100)
+        self.C2.setSliderPosition(self.doubleSpinBox_2.value())
         self.UpdateFromSpinbox = False
 
     # function update position slider C3
     def update_slider_position_C3(self):
         self.UpdateFromSpinbox = True
-        self.C3.setSliderPosition(self.doubleSpinBox_3.value()*100)
+        self.C3.setSliderPosition(self.doubleSpinBox_3.value())
         self.UpdateFromSpinbox = False
 
     # function update position slider C4
     def update_slider_position_C4(self):
         self.UpdateFromSpinbox = True
-        self.C4.setSliderPosition(self.doubleSpinBox_4.value()*100)
+        self.C4.setSliderPosition(self.doubleSpinBox_4.value())
         self.UpdateFromSpinbox = False
 
     def retranslateUi(self, Equalizer):
@@ -280,19 +281,24 @@ class Ui_Equalizer(object):
 
     def plotSound(self):    # function for plot visual audio
         if self.fileName:
-            self.audio = np.zeros_like(self.audio)
-            self.graphicsView.clear()
-            self.graphicsView.plot(self.time, self.audio)
+            myquist = (0.5 * self.sfreq)
+            if self.doubleSpinBox.value() == 0 or self.doubleSpinBox.value() > myquist:
+                pass
+            else:
+                sos = signal.butter(10, int(self.doubleSpinBox.value()),
+                                    'lowpass', fs=self.sfreq, output='sos')
+                self.audio = signal.sosfilt(sos, self.audio)
+                self.graphicsView.clear()
+                self.graphicsView.plot(self.time, self.audio)
         else:
             pass
 
     def resetSound(self):   # function for reset audio
         if self.fileName:
-            self.fileName = None
+            self.fileName = ''
             self.audio = None
             self.time = None
             self.graphicsView.clear()
-            self.graphicsView = pg.PlotWidget(self.centralwidget)
         else:
             pass
 
