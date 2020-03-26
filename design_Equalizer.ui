@@ -59,7 +59,7 @@
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>60</x>
       <y>330</y>
       <width>88</width>
       <height>34</height>
@@ -168,7 +168,7 @@
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>260</y>
+      <y>270</y>
       <width>62</width>
       <height>22</height>
      </rect>
@@ -178,7 +178,7 @@
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>260</y>
+      <y>270</y>
       <width>62</width>
       <height>22</height>
      </rect>
@@ -188,13 +188,16 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>500</y>
+      <y>480</y>
       <width>71</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Amplitudo</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_12">
@@ -286,21 +289,21 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>100</y>
+      <y>110</y>
       <width>31</width>
       <height>191</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_6">
      <item>
-      <widget class="QSlider" name="verticalSlider_3">
+      <widget class="QSlider" name="C3">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QSlider" name="verticalSlider">
+      <widget class="QSlider" name="C4">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -314,19 +317,19 @@
       <x>590</x>
       <y>110</y>
       <width>31</width>
-      <height>181</height>
+      <height>191</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_7">
      <item>
-      <widget class="QSlider" name="verticalSlider_4">
+      <widget class="QSlider" name="C5">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QSlider" name="verticalSlider_2">
+      <widget class="QSlider" name="C6">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -338,8 +341,8 @@
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>140</y>
-      <width>55</width>
+      <y>150</y>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
@@ -350,15 +353,15 @@
      </font>
     </property>
     <property name="text">
-     <string>High Cut</string>
+     <string>High Cut (Hz)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>230</y>
-      <width>55</width>
+      <x>470</x>
+      <y>250</y>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
@@ -369,15 +372,15 @@
      </font>
     </property>
     <property name="text">
-     <string>Low Cut</string>
+     <string>Low Cut (Hz)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>140</y>
-      <width>55</width>
+      <y>150</y>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
@@ -388,15 +391,15 @@
      </font>
     </property>
     <property name="text">
-     <string>High Cut</string>
+     <string>High Cut (Hz)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>230</y>
-      <width>55</width>
+      <y>250</y>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
@@ -407,7 +410,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Low Cut</string>
+     <string>Low Cut (Hz)</string>
     </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget_8">
@@ -421,7 +424,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_8">
      <item>
-      <widget class="QSlider" name="verticalSlider_5">
+      <widget class="QSlider" name="C1">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -440,7 +443,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_9">
      <item>
-      <widget class="QSlider" name="verticalSlider_6">
+      <widget class="QSlider" name="C2">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -490,7 +493,7 @@
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>160</y>
+      <y>170</y>
       <width>62</width>
       <height>22</height>
      </rect>
@@ -500,7 +503,7 @@
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>160</y>
+      <y>170</y>
       <width>62</width>
       <height>22</height>
      </rect>
@@ -510,7 +513,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>520</y>
+      <y>500</y>
       <width>41</width>
       <height>16</height>
      </rect>
