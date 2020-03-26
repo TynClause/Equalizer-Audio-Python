@@ -6,7 +6,6 @@ import numpy as np
 import pyqtgraph as pg
 import sounddevice as sd
 from scipy import signal
-from audiofilters.low_pass_filter import low_pass_filter
 
 # declaration class
 
@@ -290,6 +289,33 @@ class Ui_Equalizer(object):
                 self.audio = signal.sosfilt(sos, self.audio)
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
+                
+            if self.doubleSpinBox_2.value() == 0 or self.doubleSpinBox_2.value() > myquist:
+                pass
+            else:
+                sos1 = signal.butter(10, int(self.doubleSpinBox_2.value()),
+                                    'highpass', fs=self.sfreq, output='sos')
+                self.audio = signal.sosfilt(sos1, self.audio)
+                self.graphicsView.clear()
+                self.graphicsView.plot(self.time, self.audio)
+
+
+            if self.doubleSpinBox_3.value() == 0 or self.doubleSpinBox_3.value() > myquist:
+                pass
+            else:
+                sos2 = signal.butter(10, [200,500],'bandpass', fs=self.sfreq, output='sos')
+                self.audio = signal.sosfilt(sos2, self.audio)
+                self.graphicsView.clear()
+                self.graphicsView.plot(self.time, self.audio)
+
+            if self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > myquist:
+                pass
+            else:
+                sos3 = signal.butter(10,[200,500],'bandstop', fs=self.sfreq, output='sos')
+                self.audio = signal.sosfilt(sos3, self.audio)
+                self.graphicsView.clear()
+                self.graphicsView.plot(self.time, self.audio)
+            
         else:
             pass
 
