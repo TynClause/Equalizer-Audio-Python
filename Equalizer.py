@@ -416,7 +416,8 @@ class Ui_Equalizer(object):
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
 
-            if self.doubleSpinBox_3.value() == 0 or self.doubleSpinBox_3.value() > myquist:
+            if self.doubleSpinBox_3.value() == 0 or self.doubleSpinBox_3.value() > myquist\
+                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > myquist:
                 pass
             else:
                 sos2 = signal.butter(
@@ -425,7 +426,8 @@ class Ui_Equalizer(object):
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
 
-            if self.doubleSpinBox_5.value() == 0 or self.doubleSpinBox_5.value() > myquist:
+            if self.doubleSpinBox_5.value() == 0 or self.doubleSpinBox_5.value() > myquist\
+                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > myquist:
                 pass
             else:
                 sos3 = signal.butter(
