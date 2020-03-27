@@ -2,7 +2,7 @@
 
 this is an Application Equalizer Audio using PyQt5, support audio format *.WAV
 
-![image](\img\UI.png)
+![image](https://github.com/TynClause/Equalizer-Audio-Python/blob/master/img/UI.png)
 
 ## Requirement
 
