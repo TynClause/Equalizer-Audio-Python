@@ -2,7 +2,7 @@
 
 this is an Application Equalizer Audio using PyQt5, support audio format *.WAV
 
-![image](C:\Users\Elvin Nur Furqon\Documents\MyProject\EQUALIZER_Tugas\data\img)
+![image](\img\UI.png)
 
 ## Requirement
 
