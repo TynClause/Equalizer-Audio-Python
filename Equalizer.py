@@ -356,7 +356,7 @@ class Ui_Equalizer(object):
 
     def retranslateUi(self, Equalizer):
         _translate = QtCore.QCoreApplication.translate
-        Equalizer.setWindowTitle(_translate("Equalizer", "MainWindow"))
+        Equalizer.setWindowTitle(_translate("Equalizer", "EQUALIZER"))
         self.Judul.setText(_translate("Equalizer", "EQUALIZER"))
         self.label.setText(_translate("Equalizer", "Low Pass Filter"))
         self.label_3.setText(_translate("Equalizer", "High Pass Filter"))
