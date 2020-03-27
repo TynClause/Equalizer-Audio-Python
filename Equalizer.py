@@ -153,6 +153,10 @@ class Ui_Equalizer(object):
             self.horizontalLayoutWidget_2)
         self.pushButton_5.setObjectName("pushButton_5")
         self.horizontalLayout_2.addWidget(self.pushButton_5)
+        self.pushButton_6 = QtWidgets.QPushButton(
+            self.horizontalLayoutWidget_2)
+        self.pushButton_6.setObjectName("pushButton_6")
+        self.horizontalLayout_2.addWidget(self.pushButton_6)
         self.verticalLayoutWidget_6 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_6.setGeometry(
             QtCore.QRect(430, 110, 31, 191))
@@ -362,8 +366,9 @@ class Ui_Equalizer(object):
         self.label_12.setText(_translate("Equalizer", "Time (s)"))
         self.label_13.setText(_translate("Equalizer", "Visualisasi Audio"))
         self.pushButton.setText(_translate("Equalizer", "Load"))
+        self.pushButton_6.setText(_translate("Equalizer", "Reset"))
         self.pushButton_2.setText(_translate("Equalizer", "Plot"))
-        self.pushButton_3.setText(_translate("Equalizer", "Reset"))
+        self.pushButton_3.setText(_translate("Equalizer", "Clear"))
         self.pushButton_4.setText(_translate("Equalizer", "Play"))
         self.pushButton_5.setText(_translate("Equalizer", "Stop"))
         self.label_2.setText(_translate("Equalizer", "High Cut (Hz)"))
@@ -379,17 +384,28 @@ class Ui_Equalizer(object):
         self.pushButton_2.clicked.connect(
             self.plotSound)   # action clicked for plot
         self.pushButton_3.clicked.connect(
-            self.resetSound)  # action clicked for reset
+            self.clearSound)  # action clicked for reset
         self.pushButton_4.clicked.connect(
             self.playSound)   # action clicked for play
         self.pushButton_5.clicked.connect(
             self.stopSound)   # action clicked for stop
+        self.pushButton_6.clicked.connect(
+            self.resetSound)
+
+    def resetSound(self):
+        if self.fileName:
+            self.audio = self.audio_temp
+            self.graphicsView.clear()
+            self.graphicsView.plot(self.time, self.audio)
+        else:
+            pass
 
     def inputSound(self):   # function for input sound
         self.fileName, _ = QtWidgets.QFileDialog.getOpenFileName(
             None, 'Select Sound', r"\.", 'Sound Files(*.wav)')
         if self.fileName != '':
             self.audio, self.sfreq = lr.load(self.fileName)
+            self.audio_temp = self.audio
             self.time = np.arange(0, len(self.audio)) / self.sfreq
             self.graphicsView.plot(self.time, self.audio)
         else:
@@ -439,7 +455,7 @@ class Ui_Equalizer(object):
         else:
             pass
 
-    def resetSound(self):   # function for reset audio
+    def clearSound(self):   # function for clear audio
         if self.fileName:
             self.fileName = ''
             self.audio = None
