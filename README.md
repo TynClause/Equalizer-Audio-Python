@@ -2,7 +2,7 @@
 
 this is an Application Equalizer Audio using PyQt5, support audio format *.WAV
 
-![image](img\UI.png)
+![image](C:\Users\Elvin Nur Furqon\Documents\MyProject\EQUALIZER_Tugas\data\img)
 
 ## Requirement
 
@@ -19,17 +19,17 @@ pip install scipy
 ```
 
 ## Features
-* Load
+### Load
 load audio *WAV to program
-* Plot
+### Plot
 Plotting filter Audio Vizualization 
-* Clear
+### Clear
 Remove all or Clear
-* Play
+### Play
 Play filter audio
-* Stop
+### Stop
 Stop play filter audio
-* Reset
+### Reset
 Back to original audio
 
 ## Contributing
