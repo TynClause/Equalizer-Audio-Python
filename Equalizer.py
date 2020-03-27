@@ -420,16 +420,16 @@ class Ui_Equalizer(object):
                 pass
             else:
                 sos2 = signal.butter(
-                    10, [200, 500], 'bandpass', fs=self.sfreq, output='sos')
+                    10, [int(self.doubleSpinBox_4.value()), int(self.doubleSpinBox_3.value())], 'bandpass', fs=self.sfreq, output='sos')
                 self.audio = signal.sosfilt(sos2, self.audio)
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
 
-            if self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > myquist:
+            if self.doubleSpinBox_5.value() == 0 or self.doubleSpinBox_5.value() > myquist:
                 pass
             else:
                 sos3 = signal.butter(
-                    10, [200, 500], 'bandstop', fs=self.sfreq, output='sos')
+                    10, [int(self.doubleSpinBox_6.value()), int(self.doubleSpinBox_5.value())], 'bandstop', fs=self.sfreq, output='sos')
                 self.audio = signal.sosfilt(sos3, self.audio)
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
