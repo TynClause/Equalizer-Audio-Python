@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>img/python.png</file>
+    <file>img/equilizer.png</file>
+  </qresource>
+</RCC>

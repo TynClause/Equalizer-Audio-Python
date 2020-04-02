@@ -1,0 +1,1 @@
+pyuic5.exe design_Equalizer.ui -o BogengA.py
