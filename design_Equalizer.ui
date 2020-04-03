@@ -766,7 +766,7 @@
         <enum>Qt::LeftToRight</enum>
        </property>
        <property name="text">
-        <string>EQUILIZER</string>
+        <string>EQUALIZER</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>

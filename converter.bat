@@ -1,1 +1,1 @@
-pyuic5.exe design_Equalizer.ui -o BogengA.py
+pyuic5.exe design_Equalizer.ui -o BogengTEST.py

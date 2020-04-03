@@ -8,23 +8,16 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import resource_rc
-import librosa as lr
-import numpy as np
-import pyqtgraph as pg
-import sounddevice as sd
-from scipy import signal
+
 
 class Ui_Equalizer(object):
-    filename = None
-
     def setupUi(self, Equalizer):
         Equalizer.setObjectName("Equalizer")
         Equalizer.resize(796, 712)
         Equalizer.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.centralwidget = QtWidgets.QWidget(Equalizer)
         self.centralwidget.setObjectName("centralwidget")
-        self.graphicsView = pg.PlotWidget(self.centralwidget)
+        self.graphicsView = QtWidgets.QGraphicsView(self.centralwidget)
         self.graphicsView.setGeometry(QtCore.QRect(90, 120, 621, 231))
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -118,39 +111,22 @@ class Ui_Equalizer(object):
         self.label_14.setFont(font)
         self.label_14.setAlignment(QtCore.Qt.AlignCenter)
         self.label_14.setObjectName("label_14")
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setBold(True)
-        font.setWeight(75)
-
         self.doubleSpinBox_3 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_3.setGeometry(QtCore.QRect(470, 440, 62, 22))
-        self.doubleSpinBox_3.setObjectName("doubleSpinBox_3")
-        self.doubleSpinBox_3.setRange(0.0, 10000)
-        self.doubleSpinBox_3.setDecimals(0)  # set digit decimal C3
-        self.doubleSpinBox_3.setSingleStep(1)  # set digit counter C3
-        self.doubleSpinBox_3.editingFinished.connect(
-            self.update_slider_position_C3)  # update slinder C3        
-        self.doubleSpinBox_3.setFont(font)
-        self.doubleSpinBox_3.setObjectName("doubleSpinBox_3")
-
-
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setBold(True)
         font.setWeight(75)
-
+        self.doubleSpinBox_3.setFont(font)
+        self.doubleSpinBox_3.setObjectName("doubleSpinBox_3")
         self.doubleSpinBox_4 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_4.setGeometry(QtCore.QRect(470, 540, 62, 22))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setBold(True)
+        font.setWeight(75)
         self.doubleSpinBox_4.setFont(font)
         self.doubleSpinBox_4.setObjectName("doubleSpinBox_4")
-        self.doubleSpinBox_4.setObjectName("doubleSpinBox_4")
-        self.doubleSpinBox_4.setRange(0.0, 15000)
-        self.doubleSpinBox_4.setDecimals(0)  # set digit decimal C4
-        self.doubleSpinBox_4.setSingleStep(1)  # set counter C4
-        self.doubleSpinBox_4.editingFinished.connect(
-            self.update_slider_position_C4)  # update slider C4
-
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(200, 590, 92, 34))
         font = QtGui.QFont()
@@ -170,38 +146,23 @@ class Ui_Equalizer(object):
         self.label_3.setFont(font)
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
-        self.verticalLayout_3.addWidget(self.label_3)        
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setBold(True)
-        font.setWeight(75)
-
+        self.verticalLayout_3.addWidget(self.label_3)
         self.doubleSpinBox_2 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_2.setGeometry(QtCore.QRect(220, 560, 62, 22))
-        self.doubleSpinBox_2.setFont(font)
-        self.doubleSpinBox_2.setObjectName("doubleSpinBox_2")
-        self.doubleSpinBox_2.setRange(0.0, 10000)
-        self.doubleSpinBox_2.setDecimals(0)  # set digit decimal C2
-        self.doubleSpinBox_2.setSingleStep(1)  # set counter C2
-        self.doubleSpinBox_2.editingFinished.connect(
-            self.update_slider_position_C2)  # update slider C2        
-
-
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setBold(True)
         font.setWeight(75)
+        self.doubleSpinBox_2.setFont(font)
+        self.doubleSpinBox_2.setObjectName("doubleSpinBox_2")
         self.doubleSpinBox_5 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_5.setGeometry(QtCore.QRect(630, 440, 62, 22))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setBold(True)
+        font.setWeight(75)
         self.doubleSpinBox_5.setFont(font)
         self.doubleSpinBox_5.setObjectName("doubleSpinBox_5")
-        self.doubleSpinBox_5.setRange(0.0, 10000)
-        self.doubleSpinBox_5.setDecimals(0)  # set digit decimal C5
-        self.doubleSpinBox_5.setSingleStep(1)  # set counter C5
-        self.doubleSpinBox_5.editingFinished.connect(
-        self.update_slider_position_C5)  # update slider C5
-
-
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(470, 520, 71, 16))
         font = QtGui.QFont()
@@ -209,20 +170,15 @@ class Ui_Equalizer(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_4.setFont(font)
-        self.label_4.setObjectName("label_4")        
+        self.label_4.setObjectName("label_4")
+        self.doubleSpinBox_6 = QtWidgets.QDoubleSpinBox(self.centralwidget)
+        self.doubleSpinBox_6.setGeometry(QtCore.QRect(630, 540, 62, 22))
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setBold(True)
         font.setWeight(75)
-        self.doubleSpinBox_6 = QtWidgets.QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox_6.setGeometry(QtCore.QRect(630, 540, 62, 22))
         self.doubleSpinBox_6.setFont(font)
         self.doubleSpinBox_6.setObjectName("doubleSpinBox_6")
-        self.doubleSpinBox_6.setRange(0.0, 10000)
-        self.doubleSpinBox_6.setDecimals(0)  # set digit decimal C6
-        self.doubleSpinBox_6.setSingleStep(1)  # set counter C6
-        self.doubleSpinBox_6.editingFinished.connect(
-           self.update_slider_position_C6)  # update slider C6        
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(630, 420, 81, 16))
         font = QtGui.QFont()
@@ -289,13 +245,6 @@ class Ui_Equalizer(object):
         self.verticalLayout_5.addWidget(self.label_7)
         self.doubleSpinBox = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox.setGeometry(QtCore.QRect(80, 560, 62, 22))
-
-        self.doubleSpinBox.setRange(0.0, 10000)
-        self.doubleSpinBox.setDecimals(0)  # set digit decimal C1
-        self.doubleSpinBox.setSingleStep(1)  # set counter C1
-        self.doubleSpinBox.editingFinished.connect(
-            self.update_slider_position_C1)  # update slider C1        
-
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setBold(True)
@@ -471,63 +420,9 @@ class Ui_Equalizer(object):
         self.retranslateUi(Equalizer)
         QtCore.QMetaObject.connectSlotsByName(Equalizer)
 
-    def update_spinbox_C1(self, value):  # function update value spinbox C1
-        self.doubleSpinBox.setValue(int(value))
-
-    def update_spinbox_C2(self, value):  # function update value spinbox C2
-        self.doubleSpinBox_2.setValue(int(value))
-
-    def update_spinbox_C3(self, value):  # function update value spinbox C3
-        self.doubleSpinBox_3.setValue(int(value))
-
-    def update_spinbox_C4(self, value):  # function update value spinbox C4
-        self.doubleSpinBox_4.setValue(int(value))
-
-    def update_spinbox_C5(self, value):  # function update value spinbox C5
-        self.doubleSpinBox_5.setValue(int(value))
-
-    def update_spinbox_C6(self, value):  # function update value spinbox C6
-        self.doubleSpinBox_6.setValue(int(value))
-
-    # function update position slider C1
-    def update_slider_position_C1(self):
-        self.UpdateFromSpinbox = True
-        self.C1.setSliderPosition(self.doubleSpinBox.value())
-        self.UpdateFromSpinbox = False
-
-    # function update position slider C2
-    def update_slider_position_C2(self):
-        self.UpdateFromSpinbox = True
-        self.C2.setSliderPosition(self.doubleSpinBox_2.value())
-        self.UpdateFromSpinbox = False
-
-    # function update position slider C3
-    def update_slider_position_C3(self):
-        self.UpdateFromSpinbox = True
-        self.C3.setSliderPosition(self.doubleSpinBox_3.value())
-        self.UpdateFromSpinbox = False
-
-    # function update position slider C4
-    def update_slider_position_C4(self):
-        self.UpdateFromSpinbox = True
-        self.C4.setSliderPosition(self.doubleSpinBox_4.value())
-        self.UpdateFromSpinbox = False
-
-    # function update position slider C5
-    def update_slider_position_C5(self):
-        self.UpdateFromSpinbox = True
-        self.C5.setSliderPosition(self.doubleSpinBox_5.value())
-        self.UpdateFromSpinbox = False
-
-    # function update position slider C4
-    def update_slider_position_C6(self):
-        self.UpdateFromSpinbox = True
-        self.C6.setSliderPosition(self.doubleSpinBox_6.value())
-        self.UpdateFromSpinbox = False
-
     def retranslateUi(self, Equalizer):
         _translate = QtCore.QCoreApplication.translate
-        Equalizer.setWindowTitle(_translate("Equalizer", "Audio Equalizer"))
+        Equalizer.setWindowTitle(_translate("Equalizer", "MainWindow"))
         self.label_11.setText(_translate("Equalizer", "Amplitude"))
         self.label_12.setText(_translate("Equalizer", "Time (s)"))
         self.pushButton.setText(_translate("Equalizer", "Input Song"))
@@ -547,115 +442,5 @@ class Ui_Equalizer(object):
         self.label.setText(_translate("Equalizer", "Low Pass Filter"))
         self.label_2.setText(_translate("Equalizer", "High Cut (Hz)"))
         self.label_9.setText(_translate("Equalizer", "Cut Off (Hz)"))
-        self.label_16.setText(_translate("Equalizer", "EQUILIZER"))
-
-        self.pushButton.clicked.connect(
-            self.inputSound)    #Input
-
-        self.pushButton_2.clicked.connect(
-            self.resetSound)     #Reset                
-
-        self.pushButton_3.clicked.connect(
-            self.clearSound)    #Clear
-
-        self.pushButton_4.clicked.connect(
-            self.plotSound)     #Plot      
-
-        self.pushButton_5.clicked.connect(
-            self.playSound)     #Play              
-
-        self.pushButton_6.clicked.connect(
-            self.stopSound)     #Stop    
-
-    def resetSound(self):
-        if self.fileName:
-            self.audio = self.audio_temp
-            self.graphicsView.clear()
-            self.graphicsView.plot(self.time, self.audio)
-        else:
-            pass
-
-    def inputSound(self):   # function for input sound
-        self.fileName, _ = QtWidgets.QFileDialog.getOpenFileName(
-            None, 'Select Sound', r"\.", 'Sound Files(*.wav)')
-        if self.fileName != '':
-            self.audio, self.sfreq = lr.load(self.fileName)
-            self.audio_temp = self.audio
-            self.time = np.arange(0, len(self.audio)) / self.sfreq
-            self.graphicsView.plot(self.time, self.audio)
-        else:
-            return
-
-    def plotSound(self):    # function for plot visual audio
-        if self.fileName:
-            myquist = (0.5 * self.sfreq)
-            if self.doubleSpinBox.value() == 0 or self.doubleSpinBox.value() > myquist:
-                pass
-            else:
-                sos = signal.butter(10, int(self.doubleSpinBox.value()),
-                                    'lowpass', fs=self.sfreq, output='sos')
-                self.audio = signal.sosfilt(sos, self.audio)
-                self.graphicsView.clear()
-                self.graphicsView.plot(self.time, self.audio)
-
-            if self.doubleSpinBox_2.value() == 0 or self.doubleSpinBox_2.value() > myquist:
-                pass
-            else:
-                sos1 = signal.butter(10, int(self.doubleSpinBox_2.value()),
-                                     'highpass', fs=self.sfreq, output='sos')
-                self.audio = signal.sosfilt(sos1, self.audio)
-                self.graphicsView.clear()
-                self.graphicsView.plot(self.time, self.audio)
-
-            if self.doubleSpinBox_3.value() == 0 or self.doubleSpinBox_3.value() > myquist\
-                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > myquist:
-                pass
-            else:
-                sos2 = signal.butter(
-                    10, [int(self.doubleSpinBox_4.value()), int(self.doubleSpinBox_3.value())], 'bandpass', fs=self.sfreq, output='sos')
-                self.audio = signal.sosfilt(sos2, self.audio)
-                self.graphicsView.clear()
-                self.graphicsView.plot(self.time, self.audio)
-
-            if self.doubleSpinBox_5.value() == 0 or self.doubleSpinBox_5.value() > myquist\
-                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > myquist:
-                pass
-            else:
-                sos3 = signal.butter(
-                    10, [int(self.doubleSpinBox_6.value()), int(self.doubleSpinBox_5.value())], 'bandstop', fs=self.sfreq, output='sos')
-                self.audio = signal.sosfilt(sos3, self.audio)
-                self.graphicsView.clear()
-                self.graphicsView.plot(self.time, self.audio)
-
-        else:
-            pass
-
-    def clearSound(self):   # function for clear audio
-        if self.fileName:
-            self.fileName = ''
-            self.audio = None
-            self.time = None
-            self.graphicsView.clear()
-        else:
-            pass
-
-    def playSound(self):    # function for play audio
-        if self.fileName:
-            sd.play(self.audio, self.sfreq)
-        else:
-            pass
-
-    def stopSound(self):    # function for stop audio
-        if self.fileName:
-            sd.stop()
-
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Equalizer = QtWidgets.QMainWindow()
-    ui = Ui_Equalizer()
-    ui.setupUi(Equalizer)
-    Equalizer.show()
-    sys.exit(app.exec_())
+        self.label_16.setText(_translate("Equalizer", "EQUALIZER"))
+import resource_rc
