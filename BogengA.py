@@ -7,6 +7,15 @@
 # WARNING! All changes made in this file will be lost!
 
 
+'''
+This program is created by:
+M Randi Prawira Irawan          (1103174055)
+Dimas Rachmandhika S.           (1103174284)
+Dalvizar Kafilham Ristijana     (1103174142)
+Sebastian Cahyo Ardhi Iswara    (1103174174)
+'''
+
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 import resource_rc
 import librosa as lr
@@ -17,6 +26,7 @@ from scipy import signal
 
 class Ui_Equalizer(object):
     filename = None
+    nyquist = 0
 
     def setupUi(self, Equalizer):
         Equalizer.setObjectName("Equalizer")
@@ -126,7 +136,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox_3 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_3.setGeometry(QtCore.QRect(470, 440, 62, 22))
         self.doubleSpinBox_3.setObjectName("doubleSpinBox_3")
-        self.doubleSpinBox_3.setRange(0.0, 10000)
+        self.doubleSpinBox_3.setRange(0.0, 1)
         self.doubleSpinBox_3.setDecimals(0)  # set digit decimal C3
         self.doubleSpinBox_3.setSingleStep(1)  # set digit counter C3
         self.doubleSpinBox_3.editingFinished.connect(
@@ -145,7 +155,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox_4.setFont(font)
         self.doubleSpinBox_4.setObjectName("doubleSpinBox_4")
         self.doubleSpinBox_4.setObjectName("doubleSpinBox_4")
-        self.doubleSpinBox_4.setRange(0.0, 15000)
+        self.doubleSpinBox_4.setRange(0,1)
         self.doubleSpinBox_4.setDecimals(0)  # set digit decimal C4
         self.doubleSpinBox_4.setSingleStep(1)  # set counter C4
         self.doubleSpinBox_4.editingFinished.connect(
@@ -180,7 +190,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox_2.setGeometry(QtCore.QRect(220, 560, 62, 22))
         self.doubleSpinBox_2.setFont(font)
         self.doubleSpinBox_2.setObjectName("doubleSpinBox_2")
-        self.doubleSpinBox_2.setRange(0.0, 10000)
+        self.doubleSpinBox_2.setRange(0.0, 1)
         self.doubleSpinBox_2.setDecimals(0)  # set digit decimal C2
         self.doubleSpinBox_2.setSingleStep(1)  # set counter C2
         self.doubleSpinBox_2.editingFinished.connect(
@@ -195,7 +205,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox_5.setGeometry(QtCore.QRect(630, 440, 62, 22))
         self.doubleSpinBox_5.setFont(font)
         self.doubleSpinBox_5.setObjectName("doubleSpinBox_5")
-        self.doubleSpinBox_5.setRange(0.0, 10000)
+        self.doubleSpinBox_5.setRange(0.0, 1)
         self.doubleSpinBox_5.setDecimals(0)  # set digit decimal C5
         self.doubleSpinBox_5.setSingleStep(1)  # set counter C5
         self.doubleSpinBox_5.editingFinished.connect(
@@ -218,7 +228,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox_6.setGeometry(QtCore.QRect(630, 540, 62, 22))
         self.doubleSpinBox_6.setFont(font)
         self.doubleSpinBox_6.setObjectName("doubleSpinBox_6")
-        self.doubleSpinBox_6.setRange(0.0, 10000)
+        self.doubleSpinBox_6.setRange(0.0, 1)
         self.doubleSpinBox_6.setDecimals(0)  # set digit decimal C6
         self.doubleSpinBox_6.setSingleStep(1)  # set counter C6
         self.doubleSpinBox_6.editingFinished.connect(
@@ -242,6 +252,7 @@ class Ui_Equalizer(object):
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_8)
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
+
         self.C1 = QtWidgets.QSlider(self.verticalLayoutWidget_8)
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -251,6 +262,9 @@ class Ui_Equalizer(object):
         self.C1.setOrientation(QtCore.Qt.Vertical)
         self.C1.setObjectName("C1")
         self.verticalLayout_8.addWidget(self.C1)
+        self.C1.valueChanged[int].connect(
+            self.update_spinbox_C1)
+
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
         self.label_10.setGeometry(QtCore.QRect(270, 460, 81, 16))
         font = QtGui.QFont()
@@ -287,21 +301,21 @@ class Ui_Equalizer(object):
         self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.label_7.setObjectName("label_7")
         self.verticalLayout_5.addWidget(self.label_7)
+
         self.doubleSpinBox = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox.setGeometry(QtCore.QRect(80, 560, 62, 22))
-
-        self.doubleSpinBox.setRange(0.0, 10000)
+        self.doubleSpinBox.setRange(0,1)
         self.doubleSpinBox.setDecimals(0)  # set digit decimal C1
-        self.doubleSpinBox.setSingleStep(1)  # set counter C1
-        self.doubleSpinBox.editingFinished.connect(
-            self.update_slider_position_C1)  # update slider C1        
-
+        self.doubleSpinBox.setSingleStep(1)  # set counter C1        
         font = QtGui.QFont()
         font.setFamily("Roboto")
         font.setBold(True)
         font.setWeight(75)
         self.doubleSpinBox.setFont(font)
         self.doubleSpinBox.setObjectName("doubleSpinBox")
+        self.doubleSpinBox.editingFinished.connect(
+            self.update_slider_position_C1)  # update slider C1        
+
         self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(430, 590, 95, 34))
         font = QtGui.QFont()
@@ -333,6 +347,7 @@ class Ui_Equalizer(object):
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_9)
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
+
         self.C2 = QtWidgets.QSlider(self.verticalLayoutWidget_9)
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -342,6 +357,9 @@ class Ui_Equalizer(object):
         self.C2.setOrientation(QtCore.Qt.Vertical)
         self.C2.setObjectName("C2")
         self.verticalLayout_9.addWidget(self.C2)
+        self.C2.valueChanged[int].connect(
+            self.update_spinbox_C2)
+
         self.verticalLayoutWidget_7 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_7.setGeometry(QtCore.QRect(590, 380, 31, 191))
         font = QtGui.QFont()
@@ -353,6 +371,7 @@ class Ui_Equalizer(object):
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_7)
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
+
         self.C5 = QtWidgets.QSlider(self.verticalLayoutWidget_7)
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -362,6 +381,9 @@ class Ui_Equalizer(object):
         self.C5.setOrientation(QtCore.Qt.Vertical)
         self.C5.setObjectName("C5")
         self.verticalLayout_7.addWidget(self.C5)
+        self.C5.valueChanged[int].connect(
+            self.update_spinbox_C5)
+
         self.C6 = QtWidgets.QSlider(self.verticalLayoutWidget_7)
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -371,6 +393,9 @@ class Ui_Equalizer(object):
         self.C6.setOrientation(QtCore.Qt.Vertical)
         self.C6.setObjectName("C6")
         self.verticalLayout_7.addWidget(self.C6)
+        self.C6.valueChanged[int].connect(
+            self.update_spinbox_C6)
+
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(60, 590, 90, 34))
         font = QtGui.QFont()
@@ -410,6 +435,7 @@ class Ui_Equalizer(object):
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_6)
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
+
         self.C3 = QtWidgets.QSlider(self.verticalLayoutWidget_6)
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -419,6 +445,9 @@ class Ui_Equalizer(object):
         self.C3.setOrientation(QtCore.Qt.Vertical)
         self.C3.setObjectName("C3")
         self.verticalLayout_6.addWidget(self.C3)
+        self.C3.valueChanged[int].connect(
+            self.update_spinbox_C3)
+
         self.C4 = QtWidgets.QSlider(self.verticalLayoutWidget_6)
         font = QtGui.QFont()
         font.setFamily("Roboto")
@@ -428,6 +457,9 @@ class Ui_Equalizer(object):
         self.C4.setOrientation(QtCore.Qt.Vertical)
         self.C4.setObjectName("C4")
         self.verticalLayout_6.addWidget(self.C4)
+        self.C4.valueChanged[int].connect(
+            self.update_spinbox_C4)
+
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
         self.label_9.setGeometry(QtCore.QRect(130, 460, 71, 16))
         font = QtGui.QFont()
@@ -549,23 +581,24 @@ class Ui_Equalizer(object):
         self.label_9.setText(_translate("Equalizer", "Cut Off (Hz)"))
         self.label_16.setText(_translate("Equalizer", "EQUILIZER"))
 
+
         self.pushButton.clicked.connect(
-            self.inputSound)    #Input
-
-        self.pushButton_2.clicked.connect(
-            self.resetSound)     #Reset                
-
-        self.pushButton_3.clicked.connect(
-            self.clearSound)    #Clear
-
-        self.pushButton_4.clicked.connect(
-            self.plotSound)     #Plot      
-
-        self.pushButton_5.clicked.connect(
-            self.playSound)     #Play              
+            self.inputSound)    #Input Audio
 
         self.pushButton_6.clicked.connect(
-            self.stopSound)     #Stop    
+            self.clearSound)    #Remove Audio 
+                    
+        self.pushButton_2.clicked.connect(
+            self.resetSound)    #Remove Plot
+
+        self.pushButton_3.clicked.connect(
+            self.plotSound)    #Plot Audio
+
+        self.pushButton_4.clicked.connect(
+            self.playSound)     #Play Audio
+        self.pushButton_5.clicked.connect(
+            self.stopSound)     #Stop Audio
+  
 
     def resetSound(self):
         if self.fileName:
@@ -580,7 +613,20 @@ class Ui_Equalizer(object):
             None, 'Select Sound', r"\.", 'Sound Files(*.wav)')
         if self.fileName != '':
             self.audio, self.sfreq = lr.load(self.fileName)
+            self.nyquist = (0.5 * self.sfreq)
             self.audio_temp = self.audio
+            self.C1.setRange(0, self.nyquist)
+            self.C2.setRange(0, self.nyquist)
+            self.C3.setRange(0, self.nyquist)
+            self.C4.setRange(0, self.nyquist)
+            self.C5.setRange(0, self.nyquist)
+            self.C6.setRange(0, self.nyquist)
+            self.doubleSpinBox.setRange(0.0, self.nyquist)
+            self.doubleSpinBox_2.setRange(0.0, self.nyquist)
+            self.doubleSpinBox_3.setRange(0.0, self.nyquist)
+            self.doubleSpinBox_4.setRange(0.0, self.nyquist)
+            self.doubleSpinBox_5.setRange(0.0, self.nyquist)
+            self.doubleSpinBox_6.setRange(0.0, self.nyquist)
             self.time = np.arange(0, len(self.audio)) / self.sfreq
             self.graphicsView.plot(self.time, self.audio)
         else:
@@ -588,8 +634,8 @@ class Ui_Equalizer(object):
 
     def plotSound(self):    # function for plot visual audio
         if self.fileName:
-            myquist = (0.5 * self.sfreq)
-            if self.doubleSpinBox.value() == 0 or self.doubleSpinBox.value() > myquist:
+            nyquist = (0.5 * self.sfreq)
+            if self.doubleSpinBox.value() == 0 or self.doubleSpinBox.value() > nyquist:
                 pass
             else:
                 sos = signal.butter(10, int(self.doubleSpinBox.value()),
@@ -598,7 +644,7 @@ class Ui_Equalizer(object):
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
 
-            if self.doubleSpinBox_2.value() == 0 or self.doubleSpinBox_2.value() > myquist:
+            if self.doubleSpinBox_2.value() == 0 or self.doubleSpinBox_2.value() > nyquist:
                 pass
             else:
                 sos1 = signal.butter(10, int(self.doubleSpinBox_2.value()),
@@ -607,8 +653,8 @@ class Ui_Equalizer(object):
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
 
-            if self.doubleSpinBox_3.value() == 0 or self.doubleSpinBox_3.value() > myquist\
-                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > myquist:
+            if self.doubleSpinBox_3.value() == 0 or self.doubleSpinBox_3.value() > nyquist\
+                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > nyquist:
                 pass
             else:
                 sos2 = signal.butter(
@@ -617,8 +663,8 @@ class Ui_Equalizer(object):
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
 
-            if self.doubleSpinBox_5.value() == 0 or self.doubleSpinBox_5.value() > myquist\
-                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > myquist:
+            if self.doubleSpinBox_5.value() == 0 or self.doubleSpinBox_5.value() > nyquist\
+                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > nyquist:
                 pass
             else:
                 sos3 = signal.butter(
