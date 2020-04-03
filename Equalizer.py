@@ -8,6 +8,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Equalizer(object):
     fileName = None
+    nyquist = 0
 
     def setupUi(self, Equalizer):
         Equalizer.setObjectName("Equalizer")
@@ -81,7 +82,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox.setGeometry(QtCore.QRect(80, 300, 62, 22))
         self.doubleSpinBox.setObjectName("doubleSpinBox")
-        self.doubleSpinBox.setRange(0.0, 10000)
+        self.doubleSpinBox.setRange(0, 1)
         self.doubleSpinBox.setDecimals(0)  # set digit decimal C1
         self.doubleSpinBox.setSingleStep(1)  # set counter C1
         self.doubleSpinBox.editingFinished.connect(
@@ -89,7 +90,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox_2 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_2.setGeometry(QtCore.QRect(210, 300, 62, 22))
         self.doubleSpinBox_2.setObjectName("doubleSpinBox_2")
-        self.doubleSpinBox_2.setRange(0.0, 10000)
+        self.doubleSpinBox_2.setRange(0.0, 1)
         self.doubleSpinBox_2.setDecimals(0)  # set digit decimal C2
         self.doubleSpinBox_2.setSingleStep(1)  # set counter C2
         self.doubleSpinBox_2.editingFinished.connect(
@@ -97,7 +98,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox_4 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_4.setGeometry(QtCore.QRect(470, 270, 62, 22))
         self.doubleSpinBox_4.setObjectName("doubleSpinBox_4")
-        self.doubleSpinBox_4.setRange(0.0, 15000)
+        self.doubleSpinBox_4.setRange(0.0, 1)
         self.doubleSpinBox_4.setDecimals(0)  # set digit decimal C4
         self.doubleSpinBox_4.setSingleStep(1)  # set counter C4
         self.doubleSpinBox_4.editingFinished.connect(
@@ -105,7 +106,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox_6 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_6.setGeometry(QtCore.QRect(630, 270, 62, 22))
         self.doubleSpinBox_6.setObjectName("doubleSpinBox_6")
-        self.doubleSpinBox_6.setRange(0.0, 10000)
+        self.doubleSpinBox_6.setRange(0.0, 1)
         self.doubleSpinBox_6.setDecimals(0)  # set digit decimal C6
         self.doubleSpinBox_6.setSingleStep(1)  # set counter C6
         self.doubleSpinBox_6.editingFinished.connect(
@@ -169,14 +170,14 @@ class Ui_Equalizer(object):
         self.C3.setOrientation(QtCore.Qt.Vertical)
         self.C3.setObjectName("C3")
         self.verticalLayout_6.addWidget(self.C3)
-        self.C3.setRange(0, 10000)    # set range for C3 in here
+        self.C3.setRange(0, 1)    # set range for C3 in here
         self.C3.valueChanged[int].connect(
             self.update_spinbox_C3)   # update data to spinbox C3
         self.C4 = QtWidgets.QSlider(self.verticalLayoutWidget_6)
         self.C4.setOrientation(QtCore.Qt.Vertical)
         self.C4.setObjectName("C4")
         self.verticalLayout_6.addWidget(self.C4)
-        self.C4.setRange(0, 10000)  # set range for C4 in here
+        self.C4.setRange(0, 1)  # set range for C4 in here
         self.C4.valueChanged[int].connect(
             self.update_spinbox_C4)   # update data to spinbox C4
         self.verticalLayoutWidget_7 = QtWidgets.QWidget(self.centralwidget)
@@ -191,14 +192,14 @@ class Ui_Equalizer(object):
         self.C5.setOrientation(QtCore.Qt.Vertical)
         self.C5.setObjectName("C5")
         self.verticalLayout_7.addWidget(self.C5)
-        self.C5.setRange(0, 10000)  # set range for C5 in here
+        self.C5.setRange(0, 1)  # set range for C5 in here
         self.C5.valueChanged[int].connect(
             self.update_spinbox_C5)   # update data to spinbox C5
         self.C6 = QtWidgets.QSlider(self.verticalLayoutWidget_7)
         self.C6.setOrientation(QtCore.Qt.Vertical)
         self.C6.setObjectName("C6")
         self.verticalLayout_7.addWidget(self.C6)
-        self.C6.setRange(0, 10000)  # set range for C6 in here
+        self.C6.setRange(0, 1)  # set range for C6 in here
         self.C6.valueChanged[int].connect(
             self.update_spinbox_C6)   # update data to spinbox C6
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
@@ -240,7 +241,7 @@ class Ui_Equalizer(object):
         self.C1.setOrientation(QtCore.Qt.Vertical)
         self.C1.setObjectName("C1")
         self.verticalLayout_8.addWidget(self.C1)
-        self.C1.setRange(0, 10000)  # Set range for C1 in here
+        self.C1.setRange(0, 1)  # Set range for C1 in here
         self.C1.valueChanged[int].connect(
             self.update_spinbox_C1)  # update data to spinbox C1
         self.verticalLayoutWidget_9 = QtWidgets.QWidget(self.centralwidget)
@@ -255,7 +256,7 @@ class Ui_Equalizer(object):
         self.C2.setOrientation(QtCore.Qt.Vertical)
         self.C2.setObjectName("C2")
         self.verticalLayout_9.addWidget(self.C2)
-        self.C2.setRange(0, 10000)  # set range for C2 in here
+        self.C2.setRange(0, 1)  # set range for C2 in here
         self.C2.valueChanged[int].connect(
             self.update_spinbox_C2)  # update data to spinbox C2
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
@@ -275,7 +276,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox_3 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_3.setGeometry(QtCore.QRect(470, 170, 62, 22))
         self.doubleSpinBox_3.setObjectName("doubleSpinBox_3")
-        self.doubleSpinBox_3.setRange(0.0, 10000)
+        self.doubleSpinBox_3.setRange(0.0, 1)
         self.doubleSpinBox_3.setDecimals(0)  # set digit decimal C3
         self.doubleSpinBox_3.setSingleStep(1)  # set digit counter C3
         self.doubleSpinBox_3.editingFinished.connect(
@@ -283,7 +284,7 @@ class Ui_Equalizer(object):
         self.doubleSpinBox_5 = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox_5.setGeometry(QtCore.QRect(630, 170, 62, 22))
         self.doubleSpinBox_5.setObjectName("doubleSpinBox_5")
-        self.doubleSpinBox_5.setRange(0.0, 10000)
+        self.doubleSpinBox_5.setRange(0.0, 1)
         self.doubleSpinBox_5.setDecimals(0)  # set digit decimal C5
         self.doubleSpinBox_5.setSingleStep(1)  # set counter C5
         self.doubleSpinBox_5.editingFinished.connect(
@@ -405,7 +406,20 @@ class Ui_Equalizer(object):
             None, 'Select Sound', r"\.", 'Sound Files(*.wav)')
         if self.fileName != '':
             self.audio, self.sfreq = lr.load(self.fileName)
+            self.nyquist = (0.5 * self.sfreq)
             self.audio_temp = self.audio
+            self.C1.setRange(0, self.nyquist)
+            self.C2.setRange(0, self.nyquist)
+            self.C3.setRange(0, self.nyquist)
+            self.C4.setRange(0, self.nyquist)
+            self.C5.setRange(0, self.nyquist)
+            self.C6.setRange(0, self.nyquist)
+            self.doubleSpinBox.setRange(0.0, self.nyquist)
+            self.doubleSpinBox_2.setRange(0.0, self.nyquist)
+            self.doubleSpinBox_3.setRange(0.0, self.nyquist)
+            self.doubleSpinBox_4.setRange(0.0, self.nyquist)
+            self.doubleSpinBox_5.setRange(0.0, self.nyquist)
+            self.doubleSpinBox_6.setRange(0.0, self.nyquist)
             self.time = np.arange(0, len(self.audio)) / self.sfreq
             self.graphicsView.plot(self.time, self.audio)
         else:
@@ -413,41 +427,40 @@ class Ui_Equalizer(object):
 
     def plotSound(self):    # function for plot visual audio
         if self.fileName:
-            myquist = (0.5 * self.sfreq)
-            if self.doubleSpinBox.value() == 0 or self.doubleSpinBox.value() > myquist:
+            if self.doubleSpinBox.value() == 0 or self.doubleSpinBox.value() > self.nyquist:
                 pass
             else:
-                sos = signal.butter(10, int(self.doubleSpinBox.value()),
+                sos = signal.butter(100, int(self.doubleSpinBox.value()),
                                     'lowpass', fs=self.sfreq, output='sos')
                 self.audio = signal.sosfilt(sos, self.audio)
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
 
-            if self.doubleSpinBox_2.value() == 0 or self.doubleSpinBox_2.value() > myquist:
+            if self.doubleSpinBox_2.value() == 0 or self.doubleSpinBox_2.value() > self.nyquist:
                 pass
             else:
-                sos1 = signal.butter(10, int(self.doubleSpinBox_2.value()),
+                sos1 = signal.butter(100, int(self.doubleSpinBox_2.value()),
                                      'highpass', fs=self.sfreq, output='sos')
                 self.audio = signal.sosfilt(sos1, self.audio)
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
 
-            if self.doubleSpinBox_3.value() == 0 or self.doubleSpinBox_3.value() > myquist\
-                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > myquist:
+            if self.doubleSpinBox_3.value() == 0 or self.doubleSpinBox_3.value() > self.nyquist\
+                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > self.nyquist:
                 pass
             else:
                 sos2 = signal.butter(
-                    10, [int(self.doubleSpinBox_4.value()), int(self.doubleSpinBox_3.value())], 'bandpass', fs=self.sfreq, output='sos')
+                    100, [int(self.doubleSpinBox_4.value()), int(self.doubleSpinBox_3.value())], 'bandpass', fs=self.sfreq, output='sos')
                 self.audio = signal.sosfilt(sos2, self.audio)
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
 
-            if self.doubleSpinBox_5.value() == 0 or self.doubleSpinBox_5.value() > myquist\
-                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > myquist:
+            if self.doubleSpinBox_5.value() == 0 or self.doubleSpinBox_5.value() > self.nyquist\
+                    and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > self.nyquist:
                 pass
             else:
                 sos3 = signal.butter(
-                    10, [int(self.doubleSpinBox_6.value()), int(self.doubleSpinBox_5.value())], 'bandstop', fs=self.sfreq, output='sos')
+                    100, [int(self.doubleSpinBox_6.value()), int(self.doubleSpinBox_5.value())], 'bandstop', fs=self.sfreq, output='sos')
                 self.audio = signal.sosfilt(sos3, self.audio)
                 self.graphicsView.clear()
                 self.graphicsView.plot(self.time, self.audio)
