@@ -12,12 +12,12 @@ class Ui_Equalizer(object):
 
     def setupUi(self, Equalizer):
         Equalizer.setObjectName("Equalizer")
-        Equalizer.resize(796, 712)
+        Equalizer.resize(796, 724)
         Equalizer.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.centralwidget = QtWidgets.QWidget(Equalizer)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 9, 751, 79))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(90, 10, 271, 61))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -31,12 +31,11 @@ class Ui_Equalizer(object):
         self.Judul.setAlignment(QtCore.Qt.AlignCenter)
         self.Judul.setObjectName("Judul")
         self.verticalLayout.addWidget(self.Judul)
-        self.graphicsView = pg.PlotWidget(
-            self.centralwidget)  # ploting graphic Visual
-        self.graphicsView.setGeometry(QtCore.QRect(90, 390, 621, 231))
+        self.graphicsView = pg.PlotWidget(self.centralwidget)
+        self.graphicsView.setGeometry(QtCore.QRect(20, 390, 371, 231))
         self.graphicsView.setObjectName("graphicsView")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(60, 330, 88, 34))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 330, 88, 34))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(
             self.verticalLayoutWidget_2)
@@ -47,7 +46,7 @@ class Ui_Equalizer(object):
         self.label.setObjectName("label")
         self.verticalLayout_2.addWidget(self.label)
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(200, 330, 90, 34))
+        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(100, 330, 90, 34))
         self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(
             self.verticalLayoutWidget_3)
@@ -58,7 +57,7 @@ class Ui_Equalizer(object):
         self.label_3.setObjectName("label_3")
         self.verticalLayout_3.addWidget(self.label_3)
         self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(430, 330, 93, 34))
+        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(200, 330, 93, 34))
         self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(
             self.verticalLayoutWidget_4)
@@ -69,7 +68,7 @@ class Ui_Equalizer(object):
         self.label_5.setObjectName("label_5")
         self.verticalLayout_4.addWidget(self.label_5)
         self.verticalLayoutWidget_5 = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(590, 330, 93, 34))
+        self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(310, 330, 93, 34))
         self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(
             self.verticalLayoutWidget_5)
@@ -80,53 +79,33 @@ class Ui_Equalizer(object):
         self.label_7.setObjectName("label_7")
         self.verticalLayout_5.addWidget(self.label_7)
         self.doubleSpinBox = QtWidgets.QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox.setGeometry(QtCore.QRect(80, 300, 62, 22))
+        self.doubleSpinBox.setGeometry(QtCore.QRect(30, 300, 62, 22))
         self.doubleSpinBox.setObjectName("doubleSpinBox")
         self.doubleSpinBox.setRange(0, 1)
-        self.doubleSpinBox.setDecimals(0)  # set digit decimal C1
-        self.doubleSpinBox.setSingleStep(1)  # set counter C1
-        self.doubleSpinBox.editingFinished.connect(
-            self.update_slider_position_C1)  # update slider C1
+        self.doubleSpinBox.setDecimals(0)
+        self.doubleSpinBox.setSingleStep(1)
         self.doubleSpinBox_2 = QtWidgets.QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox_2.setGeometry(QtCore.QRect(210, 300, 62, 22))
+        self.doubleSpinBox_2.setGeometry(QtCore.QRect(110, 300, 62, 22))
         self.doubleSpinBox_2.setObjectName("doubleSpinBox_2")
         self.doubleSpinBox_2.setRange(0.0, 1)
-        self.doubleSpinBox_2.setDecimals(0)  # set digit decimal C2
-        self.doubleSpinBox_2.setSingleStep(1)  # set counter C2
-        self.doubleSpinBox_2.editingFinished.connect(
-            self.update_slider_position_C2)  # update slider C2
+        self.doubleSpinBox_2.setDecimals(0)
+        self.doubleSpinBox_2.setSingleStep(1)
         self.doubleSpinBox_4 = QtWidgets.QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox_4.setGeometry(QtCore.QRect(470, 270, 62, 22))
+        self.doubleSpinBox_4.setGeometry(QtCore.QRect(230, 290, 62, 22))
         self.doubleSpinBox_4.setObjectName("doubleSpinBox_4")
         self.doubleSpinBox_4.setRange(0.0, 1)
-        self.doubleSpinBox_4.setDecimals(0)  # set digit decimal C4
-        self.doubleSpinBox_4.setSingleStep(1)  # set counter C4
-        self.doubleSpinBox_4.editingFinished.connect(
-            self.update_slider_position_C4)  # update slider C4
+        self.doubleSpinBox_4.setDecimals(0)
+        self.doubleSpinBox_4.setSingleStep(1)
         self.doubleSpinBox_6 = QtWidgets.QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox_6.setGeometry(QtCore.QRect(630, 270, 62, 22))
+        self.doubleSpinBox_6.setGeometry(QtCore.QRect(350, 290, 62, 22))
         self.doubleSpinBox_6.setObjectName("doubleSpinBox_6")
         self.doubleSpinBox_6.setRange(0.0, 1)
-        self.doubleSpinBox_6.setDecimals(0)  # set digit decimal C6
-        self.doubleSpinBox_6.setSingleStep(1)  # set counter C6
-        self.doubleSpinBox_6.editingFinished.connect(
-            self.update_slider_position_C6)  # update slider C6
-        self.label_11 = QtWidgets.QLabel(self.centralwidget)
-        self.label_11.setGeometry(QtCore.QRect(10, 480, 71, 16))
-        self.label_11.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_11.setObjectName("label_11")
+        self.doubleSpinBox_6.setDecimals(0)
+        self.doubleSpinBox_6.setSingleStep(1)
         self.label_12 = QtWidgets.QLabel(self.centralwidget)
-        self.label_12.setGeometry(QtCore.QRect(360, 630, 81, 16))
+        self.label_12.setGeometry(QtCore.QRect(160, 620, 81, 16))
         self.label_12.setAlignment(QtCore.Qt.AlignCenter)
         self.label_12.setObjectName("label_12")
-        self.label_13 = QtWidgets.QLabel(self.centralwidget)
-        self.label_13.setGeometry(QtCore.QRect(330, 370, 151, 16))
-        font = QtGui.QFont()
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_13.setFont(font)
-        self.label_13.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_13.setObjectName("label_13")
         self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setGeometry(
             QtCore.QRect(40, 650, 711, 41))
@@ -138,6 +117,10 @@ class Ui_Equalizer(object):
         self.pushButton = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout_2.addWidget(self.pushButton)
+        self.pushButton_6 = QtWidgets.QPushButton(
+            self.horizontalLayoutWidget_2)
+        self.pushButton_6.setObjectName("pushButton_6")
+        self.horizontalLayout_2.addWidget(self.pushButton_6)
         self.pushButton_2 = QtWidgets.QPushButton(
             self.horizontalLayoutWidget_2)
         self.pushButton_2.setObjectName("pushButton_2")
@@ -154,13 +137,9 @@ class Ui_Equalizer(object):
             self.horizontalLayoutWidget_2)
         self.pushButton_5.setObjectName("pushButton_5")
         self.horizontalLayout_2.addWidget(self.pushButton_5)
-        self.pushButton_6 = QtWidgets.QPushButton(
-            self.horizontalLayoutWidget_2)
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.horizontalLayout_2.addWidget(self.pushButton_6)
         self.verticalLayoutWidget_6 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_6.setGeometry(
-            QtCore.QRect(430, 110, 31, 191))
+            QtCore.QRect(190, 130, 31, 191))
         self.verticalLayoutWidget_6.setObjectName("verticalLayoutWidget_6")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(
             self.verticalLayoutWidget_6)
@@ -170,19 +149,19 @@ class Ui_Equalizer(object):
         self.C3.setOrientation(QtCore.Qt.Vertical)
         self.C3.setObjectName("C3")
         self.verticalLayout_6.addWidget(self.C3)
-        self.C3.setRange(0, 1)    # set range for C3 in here
+        self.C3.setRange(0, 1)
         self.C3.valueChanged[int].connect(
-            self.update_spinbox_C3)   # update data to spinbox C3
+            self.update_spinbox_C3)
         self.C4 = QtWidgets.QSlider(self.verticalLayoutWidget_6)
         self.C4.setOrientation(QtCore.Qt.Vertical)
         self.C4.setObjectName("C4")
         self.verticalLayout_6.addWidget(self.C4)
-        self.C4.setRange(0, 1)  # set range for C4 in here
+        self.C4.setRange(0, 1)
         self.C4.valueChanged[int].connect(
-            self.update_spinbox_C4)   # update data to spinbox C4
+            self.update_spinbox_C4)
         self.verticalLayoutWidget_7 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_7.setGeometry(
-            QtCore.QRect(590, 110, 31, 191))
+            QtCore.QRect(310, 130, 31, 191))
         self.verticalLayoutWidget_7.setObjectName("verticalLayoutWidget_7")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(
             self.verticalLayoutWidget_7)
@@ -192,46 +171,46 @@ class Ui_Equalizer(object):
         self.C5.setOrientation(QtCore.Qt.Vertical)
         self.C5.setObjectName("C5")
         self.verticalLayout_7.addWidget(self.C5)
-        self.C5.setRange(0, 1)  # set range for C5 in here
+        self.C5.setRange(0, 1)
         self.C5.valueChanged[int].connect(
-            self.update_spinbox_C5)   # update data to spinbox C5
+            self.update_spinbox_C5)
         self.C6 = QtWidgets.QSlider(self.verticalLayoutWidget_7)
         self.C6.setOrientation(QtCore.Qt.Vertical)
         self.C6.setObjectName("C6")
         self.verticalLayout_7.addWidget(self.C6)
-        self.C6.setRange(0, 1)  # set range for C6 in here
+        self.C6.setRange(0, 1)
         self.C6.valueChanged[int].connect(
-            self.update_spinbox_C6)   # update data to spinbox C6
+            self.update_spinbox_C6)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(470, 150, 81, 16))
+        self.label_2.setGeometry(QtCore.QRect(230, 170, 81, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(470, 250, 71, 16))
+        self.label_4.setGeometry(QtCore.QRect(230, 270, 71, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(630, 150, 81, 16))
+        self.label_6.setGeometry(QtCore.QRect(350, 170, 81, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
-        self.label_8.setGeometry(QtCore.QRect(630, 250, 71, 16))
+        self.label_8.setGeometry(QtCore.QRect(350, 270, 71, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.verticalLayoutWidget_8 = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget_8.setGeometry(QtCore.QRect(90, 110, 31, 171))
+        self.verticalLayoutWidget_8.setGeometry(QtCore.QRect(40, 120, 31, 171))
         self.verticalLayoutWidget_8.setObjectName("verticalLayoutWidget_8")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(
             self.verticalLayoutWidget_8)
@@ -241,12 +220,12 @@ class Ui_Equalizer(object):
         self.C1.setOrientation(QtCore.Qt.Vertical)
         self.C1.setObjectName("C1")
         self.verticalLayout_8.addWidget(self.C1)
-        self.C1.setRange(0, 1)  # Set range for C1 in here
+        self.C1.setRange(0, 1)
         self.C1.valueChanged[int].connect(
-            self.update_spinbox_C1)  # update data to spinbox C1
+            self.update_spinbox_C1)
         self.verticalLayoutWidget_9 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_9.setGeometry(
-            QtCore.QRect(230, 110, 31, 171))
+            QtCore.QRect(130, 120, 31, 171))
         self.verticalLayoutWidget_9.setObjectName("verticalLayoutWidget_9")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(
             self.verticalLayoutWidget_9)
@@ -256,43 +235,64 @@ class Ui_Equalizer(object):
         self.C2.setOrientation(QtCore.Qt.Vertical)
         self.C2.setObjectName("C2")
         self.verticalLayout_9.addWidget(self.C2)
-        self.C2.setRange(0, 1)  # set range for C2 in here
+        self.C2.setRange(0, 1)
         self.C2.valueChanged[int].connect(
-            self.update_spinbox_C2)  # update data to spinbox C2
+            self.update_spinbox_C2)
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
-        self.label_9.setGeometry(QtCore.QRect(130, 190, 71, 16))
+        self.label_9.setGeometry(QtCore.QRect(20, 100, 71, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
-        self.label_10.setGeometry(QtCore.QRect(270, 190, 81, 16))
+        self.label_10.setGeometry(QtCore.QRect(110, 100, 81, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.label_10.setFont(font)
         self.label_10.setObjectName("label_10")
         self.doubleSpinBox_3 = QtWidgets.QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox_3.setGeometry(QtCore.QRect(470, 170, 62, 22))
+        self.doubleSpinBox_3.setGeometry(QtCore.QRect(230, 190, 62, 22))
         self.doubleSpinBox_3.setObjectName("doubleSpinBox_3")
         self.doubleSpinBox_3.setRange(0.0, 1)
-        self.doubleSpinBox_3.setDecimals(0)  # set digit decimal C3
-        self.doubleSpinBox_3.setSingleStep(1)  # set digit counter C3
-        self.doubleSpinBox_3.editingFinished.connect(
-            self.update_slider_position_C3)  # update slinder C3
+        self.doubleSpinBox_3.setDecimals(0)
+        self.doubleSpinBox_3.setSingleStep(1)
         self.doubleSpinBox_5 = QtWidgets.QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox_5.setGeometry(QtCore.QRect(630, 170, 62, 22))
+        self.doubleSpinBox_5.setGeometry(QtCore.QRect(350, 190, 62, 22))
         self.doubleSpinBox_5.setObjectName("doubleSpinBox_5")
         self.doubleSpinBox_5.setRange(0.0, 1)
-        self.doubleSpinBox_5.setDecimals(0)  # set digit decimal C5
-        self.doubleSpinBox_5.setSingleStep(1)  # set counter C5
-        self.doubleSpinBox_5.editingFinished.connect(
-            self.update_slider_position_C5)  # update slider C5
+        self.doubleSpinBox_5.setDecimals(0)
+        self.doubleSpinBox_5.setSingleStep(1)
+        self.graphicsView_2 = pg.PlotWidget(self.centralwidget)
+        self.graphicsView_2.setGeometry(QtCore.QRect(420, 390, 351, 231))
+        self.graphicsView_2.setObjectName("graphicsView_2")
+        self.label_15 = QtWidgets.QLabel(self.centralwidget)
+        self.label_15.setGeometry(QtCore.QRect(550, 80, 151, 16))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_15.setFont(font)
+        self.label_15.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_15.setObjectName("label_15")
+        self.graphicsView_3 = pg.PlotWidget(self.centralwidget)
+        self.graphicsView_3.setGeometry(QtCore.QRect(450, 100, 331, 241))
+        self.graphicsView_3.setObjectName("graphicsView_3")
+        self.label_16 = QtWidgets.QLabel(self.centralwidget)
+        self.label_16.setGeometry(QtCore.QRect(560, 620, 81, 16))
+        self.label_16.setObjectName("label_16")
+        self.label_11 = QtWidgets.QLabel(self.centralwidget)
+        self.label_11.setGeometry(QtCore.QRect(170, 370, 81, 16))
+        self.label_11.setObjectName("label_11")
+        self.label_13 = QtWidgets.QLabel(self.centralwidget)
+        self.label_13.setGeometry(QtCore.QRect(560, 370, 101, 16))
+        self.label_13.setObjectName("label_13")
         self.label_14 = QtWidgets.QLabel(self.centralwidget)
-        self.label_14.setGeometry(QtCore.QRect(20, 500, 41, 16))
-        self.label_14.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_14.setGeometry(QtCore.QRect(610, 350, 47, 13))
         self.label_14.setObjectName("label_14")
+        self.label_17 = QtWidgets.QLabel(self.centralwidget)
+        self.label_17.setGeometry(QtCore.QRect(430, 200, 47, 13))
+        self.label_17.setObjectName("label_17")
         Equalizer.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(Equalizer)
         self.statusbar.setObjectName("statusbar")
@@ -357,15 +357,13 @@ class Ui_Equalizer(object):
 
     def retranslateUi(self, Equalizer):
         _translate = QtCore.QCoreApplication.translate
-        Equalizer.setWindowTitle(_translate("Equalizer", "EQUALIZER"))
+        Equalizer.setWindowTitle(_translate("Equalizer", "MainWindow"))
         self.Judul.setText(_translate("Equalizer", "EQUALIZER"))
         self.label.setText(_translate("Equalizer", "Low Pass Filter"))
         self.label_3.setText(_translate("Equalizer", "High Pass Filter"))
         self.label_5.setText(_translate("Equalizer", "Band Pass Filter"))
         self.label_7.setText(_translate("Equalizer", "Band Stop Filter"))
-        self.label_11.setText(_translate("Equalizer", "Amplitudo"))
         self.label_12.setText(_translate("Equalizer", "Time (s)"))
-        self.label_13.setText(_translate("Equalizer", "Visualisasi Audio"))
         self.pushButton.setText(_translate("Equalizer", "Load"))
         self.pushButton_6.setText(_translate("Equalizer", "Reset"))
         self.pushButton_2.setText(_translate("Equalizer", "Plot"))
@@ -378,7 +376,13 @@ class Ui_Equalizer(object):
         self.label_8.setText(_translate("Equalizer", "Low Cut (Hz)"))
         self.label_9.setText(_translate("Equalizer", "Cut Off (Hz)"))
         self.label_10.setText(_translate("Equalizer", "Cut Off (Hz)"))
-        self.label_14.setText(_translate("Equalizer", "(A)"))
+        self.label_15.setText(_translate("Equalizer", "Chevy 1 filter(A)"))
+        self.label_16.setText(_translate("Equalizer", "Time (s)"))
+        self.label_11.setText(_translate("Equalizer", "Butter Filter(A)"))
+        self.label_13.setText(_translate(
+            "Equalizer", "Raw Audio(A) Base"))
+        self.label_14.setText(_translate("Equalizer", "Time (s)"))
+        self.label_17.setText(_translate("Equalizer", ""))
 
         self.pushButton.clicked.connect(
             self.inputSound)    # action clicked for load
@@ -397,7 +401,10 @@ class Ui_Equalizer(object):
         if self.fileName:
             self.audio = self.audio_temp
             self.graphicsView.clear()
+            self.graphicsView_3.clear()
+            self.graphicsView_3.plot(self.time, self.audio)
             self.graphicsView.plot(self.time, self.audio)
+
         else:
             pass
 
@@ -422,6 +429,8 @@ class Ui_Equalizer(object):
             self.doubleSpinBox_6.setRange(0.0, self.nyquist)
             self.time = np.arange(0, len(self.audio)) / self.sfreq
             self.graphicsView.plot(self.time, self.audio)
+            self.graphicsView_2.plot(self.time, self.audio)
+            self.graphicsView_3.plot(self.time, self.audio)
         else:
             return
 
@@ -432,18 +441,28 @@ class Ui_Equalizer(object):
             else:
                 sos = signal.butter(100, int(self.doubleSpinBox.value()),
                                     'lowpass', fs=self.sfreq, output='sos')
+                sos_chevy = signal.cheby1(100, 1, int(self.doubleSpinBox.value()),
+                                          'lowpass', fs=self.sfreq, output='sos')
                 self.audio = signal.sosfilt(sos, self.audio)
+                self.audio_chevy = signal.sosfilt(sos_chevy, self.audio)
                 self.graphicsView.clear()
+                self.graphicsView_3.clear()
                 self.graphicsView.plot(self.time, self.audio)
+                self.graphicsView_3.plot(self.time, self.audio_chevy)
 
             if self.doubleSpinBox_2.value() == 0 or self.doubleSpinBox_2.value() > self.nyquist:
                 pass
             else:
                 sos1 = signal.butter(100, int(self.doubleSpinBox_2.value()),
                                      'highpass', fs=self.sfreq, output='sos')
+                sos_chevy1 = signal.cheby1(100, 1, int(self.doubleSpinBox_2.value()),
+                                           'highpass', fs=self.sfreq, output='sos')
                 self.audio = signal.sosfilt(sos1, self.audio)
+                self.audio_chevy = signal.sosfilt(sos_chevy1, self.audio)
                 self.graphicsView.clear()
+                self.graphicsView_3.clear()
                 self.graphicsView.plot(self.time, self.audio)
+                self.graphicsView_3.plot(self.time, self.audio_chevy)
 
             if self.doubleSpinBox_3.value() == 0 or self.doubleSpinBox_3.value() > self.nyquist\
                     and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > self.nyquist:
@@ -451,9 +470,14 @@ class Ui_Equalizer(object):
             else:
                 sos2 = signal.butter(
                     100, [int(self.doubleSpinBox_4.value()), int(self.doubleSpinBox_3.value())], 'bandpass', fs=self.sfreq, output='sos')
+                sos_chevy2 = signal.cheby1(100, 1, [int(self.doubleSpinBox_4.value()), int(self.doubleSpinBox_3.value())],
+                                           'bandpass', fs=self.sfreq, output='sos')
                 self.audio = signal.sosfilt(sos2, self.audio)
+                self.audio_chevy = signal.sosfilt(sos_chevy2, self.audio)
                 self.graphicsView.clear()
+                self.graphicsView_3.clear()
                 self.graphicsView.plot(self.time, self.audio)
+                self.graphicsView_3.plot(self.time, self.audio_chevy)
 
             if self.doubleSpinBox_5.value() == 0 or self.doubleSpinBox_5.value() > self.nyquist\
                     and self.doubleSpinBox_4.value() == 0 or self.doubleSpinBox_4.value() > self.nyquist:
@@ -461,8 +485,12 @@ class Ui_Equalizer(object):
             else:
                 sos3 = signal.butter(
                     100, [int(self.doubleSpinBox_6.value()), int(self.doubleSpinBox_5.value())], 'bandstop', fs=self.sfreq, output='sos')
+                sos_chevy3 = signal.cheby1(100, 1, [int(self.doubleSpinBox_6.value()), int(self.doubleSpinBox_5.value())],
+                                           'bandstop', fs=self.sfreq, output='sos')
                 self.audio = signal.sosfilt(sos3, self.audio)
+                self.audio_chevy = signal.sosfilt(sos_chevy3, self.audio)
                 self.graphicsView.clear()
+                self.graphicsView_3.clear()
                 self.graphicsView.plot(self.time, self.audio)
 
         else:
@@ -474,6 +502,7 @@ class Ui_Equalizer(object):
             self.audio = None
             self.time = None
             self.graphicsView.clear()
+            self.graphicsView_2.clear()
         else:
             pass
 
